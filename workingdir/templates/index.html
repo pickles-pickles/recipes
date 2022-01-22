@@ -15,6 +15,10 @@
     </form>
     {% for recipe in recipes %}
     <div>{{ recipe[1] + ': ' + recipe[2] }}</div>
+    {% endfor %} {% for user in users %}
+    <div>{{ user[1] + ': ' + user[2] }}</div>
     {% endfor %}
+
+    <!-- <form action="/" method=""></form> -->
   </body>
 </html>

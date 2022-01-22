@@ -15,6 +15,7 @@ mycursor = mydb.cursor()
 def selectUsers():
     mycursor.execute("SELECT * FROM test.users")
     myresult = mycursor.fetchall()
+    return myresult
 """     for x in myresult:
         print(x)
 
@@ -38,4 +39,11 @@ def createRecipe(name, category):
     mydb.commit()
     print(mycursor.rowcount, "record inserted.")
 
-""" selectRecipes() """
+def deleteRecipe(name):
+    sql = "DELETE FROM test.recipes  WHERE recipename = 'chocolate cake' "
+    mycursor.execute(sql)
+    mydb.commit()
+    print(mycursor.rowcount, "record deleted.")
+
+deleteRecipe("chocolate cake")
+""" createRecipe("a", "a") """

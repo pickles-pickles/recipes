@@ -18,8 +18,9 @@ def index():
         createRecipe(name, category)
     
     recipes = selectRecipes()
+    users = selectUsers()
 
-    return render_template('index.html', recipes = recipes)
+    return render_template('index.html', recipes = recipes, users = users)
 
 if __name__ == "__main__":
     app.run(debug=True)
