@@ -40,8 +40,8 @@ def createRecipe(name, category):
     print(mycursor.rowcount, "record inserted.")
 
 def deleteRecipe(name):
-    sql = "DELETE FROM test.recipes  WHERE recipename = 'chocolate cake' "
-    mycursor.execute(sql)
+    sql = """ DELETE FROM test.recipes  WHERE recipename = %s """ 
+    mycursor.execute(sql, (name,))
     mydb.commit()
     print(mycursor.rowcount, "record deleted.")
 
