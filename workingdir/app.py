@@ -15,9 +15,13 @@ def index():
     if request.method == 'POST':
         name = request.form.get('name')
         category = request.form.get('category')
-        createRecipe(name, category)
+        difficulty = request.form.get('difficulty')
+        global newRecipe
+        newRecipe = Recipe(name, category, difficulty)
+        newRecipe.createRecipe()
+        #createRecipe(name, category)
     
-    recipes = selectRecipes()
+    recipes = newRecipe.selectRecipes()
     users = selectUsers()
 
     return render_template('index.html', recipes = recipes, users = users)
