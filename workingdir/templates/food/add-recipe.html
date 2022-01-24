@@ -62,8 +62,10 @@
       </form>
       {% for recipe in recipes %}
       <div>
-        {{ recipe[1] + ': ' + recipe[2] + ': ' + recipe[3]|string + ': ' +
-        recipe[4]|string + ': ' + recipe[5]|string }}
+        {{ 'name:'+ recipe[0]|string + ', description: ' + recipe[1]|string + '
+        ,img_url: ' + recipe[2]|string + ', difficulty: ' + recipe[3]|string +
+        ', :foreign_key' + recipe[4]|string + ' ,cat_name: ' + recipe[5]|string
+        }}
       </div>
       {% endfor %}
     </body>
