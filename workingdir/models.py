@@ -47,7 +47,7 @@ def updateRecipe(name, category):
     mydb.commit()
     print(mycursor.rowcount,"record updated successfully ")
 
-updateRecipe("fench fries", "potatoes")
+
 
 def deleteRecipe(name):
     sql = """ DELETE FROM test.recipes  WHERE recipename = %s """ 
@@ -71,7 +71,7 @@ class Recipe:
 
     @classmethod
     def selectRecipes(self):
-        mycursor.execute("SELECT * FROM test.recipes")
+        mycursor.execute("SELECT recipename, recipe_description, recipe_img, recipedifficulty, category  , cat_name FROM test.recipes INNER JOIN test.categories ON test.recipes.category=test.categories.idcategories;")
         myresult = mycursor.fetchall()
         return myresult
     

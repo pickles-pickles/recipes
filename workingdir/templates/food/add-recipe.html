@@ -53,7 +53,7 @@
         <!--   <input type="text" placeholder="Category" name="category" /> -->
         <select name="category" id="category">
           {% for category in categories %}
-          <option value="{{'this is cool '+category[1]}}">
+          <option value="{{category[0]}}">
             {{ category[0]|string + " : " + category[1] }}
           </option>
           {% endfor %}
@@ -62,8 +62,8 @@
       </form>
       {% for recipe in recipes %}
       <div>
-        {{ recipe[1] + ': ' + recipe[2] + ': ' + recipe[3] + ': ' +
-        recipe[4]|string + ': ' + recipe[5] }}
+        {{ recipe[1] + ': ' + recipe[2] + ': ' + recipe[3]|string + ': ' +
+        recipe[4]|string + ': ' + recipe[5]|string }}
       </div>
       {% endfor %}
     </body>
