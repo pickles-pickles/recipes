@@ -76,7 +76,7 @@ class Recipe:
         return myresult
     
     def createRecipe(self):
-        sql = "INSERT INTO test.recipes (recipename, recipe_description, recipe_img, recipedifficulty, recipecategory) VALUES (%s, %s, %s, %s, %s)"
+        sql = "INSERT INTO test.recipes (recipename, recipe_description, recipe_img, recipedifficulty, category) VALUES (%s, %s, %s, %s, %s)"
         mycursor.execute(sql, (self.name, self.description, self.img_url, self.difficulty, self.category))
         mydb.commit()
         print(mycursor.rowcount, "record inserted.")

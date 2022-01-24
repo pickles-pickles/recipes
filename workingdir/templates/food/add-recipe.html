@@ -52,9 +52,10 @@
         <input type="text" placeholder="Difficulty" name="difficulty" />
         <!--   <input type="text" placeholder="Category" name="category" /> -->
         <select name="category" id="category">
-          {% for category in categories %}
-          <option value="{{category[0]}}">
-            {{ category[0]|string + " : " + category[1] }}
+          <!-- option value should be the KEY, NOT the value from the foreign table -->
+          {% for recipe in recipes %}
+          <option value="{{recipe[4]}}">
+            {{ recipe[5] }}
           </option>
           {% endfor %}
         </select>
@@ -64,7 +65,7 @@
       <div>
         {{ 'name:'+ recipe[0]|string + ', description: ' + recipe[1]|string + '
         ,img_url: ' + recipe[2]|string + ', difficulty: ' + recipe[3]|string +
-        ', :foreign_key' + recipe[4]|string + ' ,cat_name: ' + recipe[5]|string
+        ', foreign_key: ' + recipe[4]|string + ', cat_name: ' + recipe[5]|string
         }}
       </div>
       {% endfor %}
