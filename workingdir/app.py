@@ -36,8 +36,8 @@ def food():
 
 @app.route('/category.html')
 def category():
-    
-    return render_template('category.html', )
+    categories = Category.selectCategories()
+    return render_template('category.html', categories = categories )
 
 @app.route('/user.html')
 def user():
@@ -63,9 +63,31 @@ def add_recipe():
         #createRecipe(name, category)
     
     recipes = Recipe.selectRecipes()
+    categories = Category.selectCategories()
+
+    return render_template('/food/add-recipe.html', recipes = recipes, categories=categories)
+
+""" category """
+
+@app.route('/add-category.html', methods=['GET', 'POST'])
+def add_category():
+    if request.method == "GET":
+        pass
+
+    if request.method == 'POST':
+        cat_name = request.form.get('cat_name')
+        img_url = request.form.get('img_url')
+        featured = request.form.get('featured')
+        active = request.form.get('active')
+        global newCategory
+        newCategory = Category(cat_name, img_url, featured, active)
+        newCategory.createCategory()
+        #createRecipe(name, category)
+    
+    categories = Category.selectCategories()
     
 
-    return render_template('/food/add-recipe.html', recipes = recipes, )
+    return render_template('/category/add-category.html', categories = categories, )
 
 """ 
 Always keep this if statement in the bottom

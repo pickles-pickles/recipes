@@ -95,4 +95,23 @@ class Recipe:
         print(mycursor.rowcount, "record deleted.")
 
 
-        
+""" CATEGORIES """
+
+class Category(Recipe):
+    def __init__(self, cat_name, img_url, featured, active):
+        self.cat_name = cat_name
+        self.img_url = img_url
+        self.featured = featured
+        self.active = active
+
+    def createCategory(self):
+        sql = "INSERT INTO test.categories (cat_name, cat_img, cat_featured, cat_active) VALUES (%s, %s, %s, %s)"
+        mycursor.execute(sql, (self.cat_name, self.img_url, self.featured, self.active))
+        mydb.commit()
+        print(mycursor.rowcount, "record inserted.")
+
+    @classmethod
+    def selectCategories(self):
+        mycursor.execute("SELECT * FROM test.categories")
+        myresult = mycursor.fetchall()
+        return myresult

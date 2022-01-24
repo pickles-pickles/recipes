@@ -12,7 +12,7 @@
         crossorigin="anonymous"
       />
       <link rel="stylesheet" href="../../static/styles/styles.css" />
-      <title>Add food</title>
+      <title>Add category</title>
     </head>
     <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,25 +45,31 @@
           </ul>
         </div>
       </nav>
-      <form action="/add-recipe.html" method="post">
-        <input type="text" placeholder="Name" name="name" />
-        <input type="text" placeholder="Description" name="description" />
+      <form action="/add-category.html" method="post" class="d-flex">
+        <input type="text" placeholder="Name" name="cat_name" />
         <input type="text" placeholder="Image location" name="img_url" />
-        <input type="text" placeholder="Difficulty" name="difficulty" />
-        <!--   <input type="text" placeholder="Category" name="category" /> -->
-        <select name="category" id="category">
-          {% for category in categories %}
-          <option value="{{'this is cool '+category[1]}}">
-            {{ category[0]|string + " : " + category[1] }}
-          </option>
-          {% endfor %}
-        </select>
+        <span class="d-flex">
+          <p>Featured:</p>
+          <input
+            type="radio"
+            value="yes"
+            name="featured"
+            checked
+            class="mx-2"
+          />
+          <input type="radio" value="no" name="featured" class="mr-2" />
+        </span>
+
+        <span class="d-flex">
+          <p>Active:</p>
+          <input type="radio" value="yes" name="active" checked class="mx-2" />
+          <input type="radio" value="no" name="active" class="mr-2" />
+        </span>
         <input type="submit" value="Submit" />
       </form>
-      {% for recipe in recipes %}
+      {% for category in categories %}
       <div>
-        {{ recipe[1] + ': ' + recipe[2] + ': ' + recipe[3] + ': ' +
-        recipe[4]|string + ': ' + recipe[5] }}
+        {{ category[0]|string + " : " + category[1] }}
       </div>
       {% endfor %}
     </body>
