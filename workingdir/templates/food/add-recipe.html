@@ -51,9 +51,9 @@
       <input type="text" placeholder="Difficulty" name="difficulty" />
       <select name="category" id="category">
         <!-- option value should be the KEY, NOT the value from the foreign table -->
-        {% for recipe in recipes %}
-        <option value="{{recipe[4]}}">
-          {{ recipe[5] }}
+        {% for category in categories %}
+        <option value="{{category[0]}}">
+          {{ category[1] }}
         </option>
         {% endfor %}
       </select>
