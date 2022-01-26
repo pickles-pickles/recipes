@@ -87,10 +87,12 @@ class Recipe:
         mycursor.execute(sql_update_query, input_data)
         mydb.commit()
         print(mycursor.rowcount,"record updated successfully ")
-
+        
+    
     def deleteRecipe(self):
         sql = """ DELETE FROM test.recipes  WHERE recipename = %s """ 
-        mycursor.execute(sql, (self.name, self.description, self.img_url, self.difficulty, self.category))
+        """  mycursor.execute(sql, (self.name, self.description, self.img_url, self.difficulty, self.category)) """
+        mycursor.execute(sql, (self.name, ))
         mydb.commit()
         print(mycursor.rowcount, "record deleted.")
 

@@ -1,4 +1,5 @@
 from distutils.log import debug
+from pydoc import stripid
 from flask import Flask, render_template, request
 from flask_cors import CORS
 from models import *
@@ -67,6 +68,31 @@ def add_recipe():
 
     return render_template('/food/add-recipe.html', recipes = recipes, categories=categories)
 
+#############################################################################################
+                                        ## WORKING HERE ##
+#############################################################################################
+@app.route('/delete-recipe.html', methods=['GET', 'POST'])
+def delete_recipe():
+    if request.method == "GET":
+        pass
+
+    if request.method == 'POST':
+        name = request.form.get('name')
+        description = request.form.get('description')
+        img_url = request.form.get('img_url')
+        difficulty = request.form.get('difficulty')
+        category = request.form.get('category')
+
+        global toDelete
+        toDelete = Recipe(name, description, img_url, difficulty, category)
+        toDelete.deleteRecipe()
+
+    recipes = Recipe.selectRecipes()
+
+    return render_template('/food/delete-recipe.html', recipes = recipes )
+
+#######################################################################################
+
 """ category """
 
 @app.route('/add-category.html', methods=['GET', 'POST'])
@@ -94,3 +120,12 @@ Always keep this if statement in the bottom
  """
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+""" recipe = request.form.get('recipe')
+        #global recipeToDelete
+        #recipe = recipe.strip("()")
+        #recipeToDelete = Recipe(recipe[0], recipe[1], recipe[2], recipe[3], recipe[4])
+        #print(recipeToDelete)
+        #recipeToDelete.deleteRecipe()
+        Recipe.deleteRecipe() """

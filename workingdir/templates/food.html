@@ -45,9 +45,15 @@
         </ul>
       </div>
     </nav>
-    <button class="btn btn-success">
-      <a href="/add-recipe.html">Add recipe</a>
-    </button>
+    <div class="d-flex">
+      <button class="btn btn-success">
+        <a href="/add-recipe.html">Add recipe</a>
+      </button>
+      <button class="btn btn-danger ml-2">
+        <a href="/delete-recipe.html">Delete recipe</a>
+      </button>
+    </div>
+
     <h1>This is a list with the recipes</h1>
     {% for food in foods %}
     <div>{{ food[1] + ': ' + food[2] }}</div>

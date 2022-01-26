@@ -12,7 +12,7 @@
         crossorigin="anonymous"
       />
       <link rel="stylesheet" href="../../static/styles/styles.css" />
-      <title>Add food</title>
+      <title>Delete Recipe</title>
     </head>
     <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,21 +45,31 @@
           </ul>
         </div>
       </nav>
-      <form action="/add-recipe.html" method="post">
-        <input type="text" placeholder="Name" name="name" />
-        <input type="text" placeholder="Description" name="description" />
-        <input type="text" placeholder="Image location" name="img_url" />
-        <input type="text" placeholder="Difficulty" name="difficulty" />
-        <select name="category" id="category">
-          <!-- option value should be the KEY, NOT the value from the foreign table -->
+      <!-- <form action="/delete-recipe.html" method="post">
+        <select name="recipe" id="name">
+          
           {% for recipe in recipes %}
-          <option value="{{recipe[4]}}">
-            {{ recipe[5] }}
+          <option value="{{ recipe[0] }}">
+            {{ recipe[0] + ' in category ' + recipe[5] }}
           </option>
           {% endfor %}
         </select>
-        <input type="submit" value="Submit" />
-      </form>
+        <input type="submit" value="Submit" /> -->
+      <!--  </form> -->
+      <h1>Delete from here</h1>
+      {% for recipe in recipes %}
+      <div>
+        <form action="/delete-recipe.html" method="post">
+          <input type="text" name="name" value="{{recipe[0]}}" />
+          <input type="text" name="description" value="{{recipe[1]}}" />
+          <input type="text" name="img_url" value="{{recipe[2]}}" />
+          <input type="text" name="difficulty" value="{{recipe[3]}}" />
+          <input type="text" name="category" value="{{recipe[4]}}" />
+          <input type="submit" value="Delete recipe" />
+        </form>
+      </div>
+      {% endfor %}
+      <h1>To here</h1>
       {% for recipe in recipes %}
       <div>
         {{ 'name:'+ recipe[0]|string + ', description: ' + recipe[1]|string + '
@@ -69,5 +79,15 @@
       </div>
       {% endfor %}
     </body>
+    <script>
+      /*    const name = document.getElementById('name')
+
+      name.addEventListener('input', () => {
+        console.log(name.value)
+        const valueToArray = name.value.split(',')
+        console.log(valueToArray)
+        console.log(valueToArray[0])
+      }) */
+    </script>
   </html>
 </html>
