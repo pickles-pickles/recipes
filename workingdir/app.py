@@ -68,9 +68,7 @@ def add_recipe():
 
     return render_template('/food/add-recipe.html', recipes = recipes, categories=categories)
 
-#############################################################################################
-                                        ## WORKING HERE ##
-#############################################################################################
+
 @app.route('/delete-recipe.html', methods=['GET', 'POST'])
 def delete_recipe():
     if request.method == "GET":
@@ -90,6 +88,31 @@ def delete_recipe():
     recipes = Recipe.selectRecipes()
 
     return render_template('/food/delete-recipe.html', recipes = recipes )
+
+
+#############################################################################################
+                                        ## WORKING HERE ##
+#############################################################################################
+
+@app.route('/update-recipe.html', methods=['GET', 'POST'])
+def update_recipe():
+    if request.method == "GET":
+        pass
+
+    if request.method == 'POST':
+        name = request.form.get('name')
+        description = request.form.get('description')
+        img_url = request.form.get('img_url')
+        difficulty = request.form.get('difficulty')
+        category = request.form.get('category')
+
+        global toUpdate
+        toUpdate = Recipe(name, description, img_url, difficulty, category)
+        toUpdate.updateRecipe()
+
+    recipes = Recipe.selectRecipes()
+
+    return render_template('/food/update-recipe.html', recipes = recipes )
 
 #######################################################################################
 

@@ -1,73 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link
-        rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous"
-      />
-      <link rel="stylesheet" href="../../static/styles/styles.css" />
-      <title>Add food</title>
-    </head>
-    <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/food.html">Food</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/category.html">Category</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/user.html">User</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <form action="/add-recipe.html" method="post">
-        <input type="text" placeholder="Name" name="name" />
-        <input type="text" placeholder="Description" name="description" />
-        <input type="text" placeholder="Image location" name="img_url" />
-        <input type="text" placeholder="Difficulty" name="difficulty" />
-        <select name="category" id="category">
-          <!-- option value should be the KEY, NOT the value from the foreign table -->
-          {% for recipe in recipes %}
-          <option value="{{recipe[4]}}">
-            {{ recipe[5] }}
-          </option>
-          {% endfor %}
-        </select>
-        <input type="submit" value="Submit" />
-      </form>
-      {% for recipe in recipes %}
-      <div>
-        {{ 'name:'+ recipe[0]|string + ', description: ' + recipe[1]|string + '
-        ,img_url: ' + recipe[2]|string + ', difficulty: ' + recipe[3]|string +
-        ', foreign_key: ' + recipe[4]|string + ', cat_name: ' + recipe[5]|string
-        }}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../static/styles/styles.css" />
+    <title>Add food</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/food.html">Food</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/category.html">Category</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user.html">User</a>
+          </li>
+        </ul>
       </div>
-      {% endfor %}
-    </body>
-  </html>
+    </nav>
+    <form action="/add-recipe.html" method="post">
+      <input type="text" placeholder="Name" name="name" />
+      <input type="text" placeholder="Description" name="description" />
+      <input type="text" placeholder="Image location" name="img_url" />
+      <input type="text" placeholder="Difficulty" name="difficulty" />
+      <select name="category" id="category">
+        <!-- option value should be the KEY, NOT the value from the foreign table -->
+        {% for recipe in recipes %}
+        <option value="{{recipe[4]}}">
+          {{ recipe[5] }}
+        </option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Submit" />
+    </form>
+    {% for recipe in recipes %}
+    <div>
+      {{ 'name:'+ recipe[0]|string + ', description: ' + recipe[1]|string + '
+      ,img_url: ' + recipe[2]|string + ', difficulty: ' + recipe[3]|string + ',
+      foreign_key: ' + recipe[4]|string + ', cat_name: ' + recipe[5]|string }}
+    </div>
+    {% endfor %}
+  </body>
 </html>
