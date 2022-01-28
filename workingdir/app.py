@@ -32,8 +32,8 @@ def index():
 
 @app.route('/food.html')
 def food():
-    foods = Recipe.selectRecipes()
-    return render_template('food.html', foods = foods,)  
+    recipes = Recipe.selectRecipes()
+    return render_template('food.html', recipes = recipes,)  
 
 @app.route('/category.html')
 def category():
