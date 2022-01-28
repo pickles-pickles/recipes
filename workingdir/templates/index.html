@@ -78,9 +78,32 @@
       <input type="text" placeholder="Category" name="category" />
       <input type="submit" value="Submit" />
     </form> -->
-    {% for recipe in recipes %}
-    <div>{{ recipe[1] + ': ' + recipe[2] }}</div>
-    {% endfor %}
+    <h1>This is a list with the recipes</h1>
+
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col">Difficulty</th>
+            <th scope="col">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for recipe in recipes %}
+          <tr>
+            <th scope="row">{{ recipe[0] }}</th>
+            <td>{{ recipe[1] }}</td>
+            <td>{{ recipe[2] }}</td>
+            <td>{{ recipe[3] }}</td>
+            <td>{{ recipe[5] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
     <!--   {% for user in users %}
     <div>{{ user[1] + ': ' + user[2] }}</div>
     {% endfor %}

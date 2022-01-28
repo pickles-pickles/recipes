@@ -20,15 +20,11 @@ def index():
         global newRecipe
         newRecipe = Recipe(name, category, difficulty)
         newRecipe.createRecipe()
-        #createRecipe(name, category)
     
     recipes = Recipe.selectRecipes()
     """ users = selectUsers() """
 
     return render_template('index.html', recipes = recipes, )
-
-""" if __name__ == "__main__":
-    app.run(debug=True) """
 
 @app.route('/food.html')
 def food():
@@ -61,7 +57,6 @@ def add_recipe():
         global newRecipe
         newRecipe = Recipe(name, description, img_url, difficulty, category)
         newRecipe.createRecipe()
-        #createRecipe(name, category)
     
     recipes = Recipe.selectRecipes()
     categories = Category.selectCategories()

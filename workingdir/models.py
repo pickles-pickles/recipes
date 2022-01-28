@@ -1,64 +1,20 @@
 from msilib.schema import Class
 import mysql.connector
+from password import db_password
+
+#connect to db
 
 mydb = mysql.connector.connect(
   host="localhost",
   user="test",
-  password="P@ssw0rdf0rf#n"
+  password=db_password
 )
-
-print(mydb) 
-
-print("----------------------------------")
-
 mycursor = mydb.cursor()
 
-def selectUsers():
-    mycursor.execute("SELECT * FROM test.users")
-    myresult = mycursor.fetchall()
-    return myresult
-"""     for x in myresult:
-        print(x)
-
-selectUsers()
-print("----------------------------------") """
-
-def selectRecipes():
-    mycursor.execute("SELECT * FROM test.recipes")
-    myresult = mycursor.fetchall()
-    """ for x in myresult:
-        print(x) """
-    # you can use return instead of a loop
-    return myresult
-
-
-
-def createRecipe(name, category):
-    sql = "INSERT INTO test.recipes (recipename, recipecategory) VALUES (%s, %s)"
-    
-    mycursor.execute(sql, (name, category))
-    mydb.commit()
-    print(mycursor.rowcount, "record inserted.")
-
-def updateRecipe(name, category):
-    sql_update_query = """UPDATE test.recipes SET recipecategory = %s WHERE recipename = %s"""
-    input_data = (category,name )
-    mycursor.execute(sql_update_query, input_data)
-    mydb.commit()
-    print(mycursor.rowcount,"record updated successfully ")
-
-
-
-def deleteRecipe(name):
-    sql = """ DELETE FROM test.recipes  WHERE recipename = %s """ 
-    mycursor.execute(sql, (name,))
-    mydb.commit()
-    print(mycursor.rowcount, "record deleted.")
-
-deleteRecipe("chocolate cake")
-""" createRecipe("a", "a") """
 
 """ OBJECT ORIENTD PROGRAMMING STUFF """
+
+#define class
 
 class Recipe:
     def __init__(self, name, description, img_url, difficulty, category):
@@ -68,7 +24,7 @@ class Recipe:
         self.difficulty = difficulty
         self.category = category
         
-
+    #selectRecipes in bound to class, not instance
     @classmethod
     def selectRecipes(self):
         mycursor.execute("SELECT recipename, recipe_description, recipe_img, recipedifficulty, category  , cat_name FROM test.recipes INNER JOIN test.categories ON test.recipes.category=test.categories.idcategories;")
@@ -97,6 +53,7 @@ class Recipe:
         """  mycursor.execute(sql, (self.name, self.description, self.img_url, self.difficulty, self.category)) """
        
 
+""" STUFF FROM BELOW HERE IS TO BE USED ONLY IF WE HAVE TIME TO MAKE SOME EXTRAS FOR THE PROEJCT """
 """ CATEGORIES """
 
 class Category(Recipe):
