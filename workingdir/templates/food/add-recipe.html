@@ -62,7 +62,7 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/food.html">Food</a>
+            <a class="nav-link" href="/food.html">Recipes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/category.html">Category</a>
@@ -106,6 +106,9 @@
         </option>
         {% endfor %}
       </select>
+      <div class="row ml-0">
+        <input type="text" name="ing" placeholder="Ingredient" />
+      </div>
       <input type="submit" value="Submit" />
     </form>
     <h1 class="text-center">List of recipes</h1>
@@ -132,6 +135,13 @@
           {% endfor %}
         </tbody>
       </table>
+      {% for ingredient in ingredients %}
+      <h3>Ingredient title</h3>
+      <p>{{ ingredient[0] }}</p>
+      {% endfor %} {% for ingredient in ingredients2 %}
+      <h3>Ingredient title</h3>
+      <p>{{ ingredient[0] }}</p>
+      {% endfor %}
     </div>
     <!--  {% for recipe in recipes %}
     <div>

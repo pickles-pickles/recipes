@@ -22,9 +22,10 @@ def index():
         newRecipe.createRecipe()
     
     recipes = Recipe.selectRecipes()
+    ingredients= Ingredient.selectIngredients()
     """ users = selectUsers() """
 
-    return render_template('index.html', recipes = recipes, )
+    return render_template('index.html', recipes = recipes, ingredients = ingredients )
 
 @app.route('/food.html')
 def food():
@@ -57,11 +58,18 @@ def add_recipe():
         global newRecipe
         newRecipe = Recipe(name, description, img_url, difficulty, category)
         newRecipe.createRecipe()
+        #ingredient
+        
+        ingredient = request.form.get("ing")
+        newIngredient = Ingredient(ingredient)
+        newIngredient.createIngredient()
     
     recipes = Recipe.selectRecipes()
     categories = Category.selectCategories()
-
-    return render_template('/food/add-recipe.html', recipes = recipes, categories=categories)
+    ingredients = Ingredient.selectIngredients()
+    ingredients2 = Ingredient.selectIngredients2()
+    
+    return render_template('/food/add-recipe.html', recipes = recipes, categories=categories, ingredients = ingredients, ingredients2 = ingredients2)
 
 
 @app.route('/delete-recipe.html', methods=['GET', 'POST'])
@@ -114,7 +122,8 @@ def readRecipe():
     if request.method== "GET":
         recipes = Recipe.selectRecipes()
         idrecipes = request.args.get('idrecipes')
-    return render_template("/food/read-recipe.html", recipes = recipes, idrecipes = idrecipes)
+        recipeing = selectRecipeIngredients()
+    return render_template("/food/read-recipe.html", recipes = recipes, idrecipes = idrecipes, recipeing = recipeing)
 
 #######################################################################################
 

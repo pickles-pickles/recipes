@@ -73,26 +73,16 @@
         </ul>
       </div>
     </nav>
-    <!-- <form action="/delete-recipe.html" method="post">
-        <select name="recipe" id="name">
-          
-          {% for recipe in recipes %}
-          <option value="{{ recipe[0] }}">
-            {{ recipe[0] + ' in category ' + recipe[5] }}
-          </option>
-          {% endfor %}
-        </select>
-        <input type="submit" value="Submit" /> -->
-    <!--  </form> -->
+
     <h1>Delete from here</h1>
     {% for recipe in recipes %}
     <div>
       <form action="/delete-recipe.html" method="post">
-        <input type="text" name="name" value="{{recipe[0]}}" />
-        <input type="text" name="description" value="{{recipe[1]}}" />
-        <input type="text" name="img_url" value="{{recipe[2]}}" />
-        <input type="text" name="difficulty" value="{{recipe[3]}}" />
-        <input type="text" name="category" value="{{recipe[4]}}" />
+        <input type="text" name="name" value="{{recipe[1]}}" />
+        <input type="text" name="description" value="{{recipe[2]}}" />
+        <input type="text" name="img_url" value="{{recipe[3]}}" />
+        <input type="text" name="difficulty" value="{{recipe[4]}}" />
+        <input type="text" name="category" value="{{recipe[6]}}" />
         <input type="submit" value="Delete recipe" />
       </form>
     </div>
@@ -113,11 +103,11 @@
         <tbody>
           {% for recipe in recipes %}
           <tr>
-            <th scope="row">{{ recipe[0] }}</th>
-            <td>{{ recipe[1] }}</td>
+            <th scope="row">{{ recipe[1] }}</th>
             <td>{{ recipe[2] }}</td>
             <td>{{ recipe[3] }}</td>
-            <td>{{ recipe[5] }}</td>
+            <td>{{ recipe[4] }}</td>
+            <td>{{ recipe[6] }}</td>
           </tr>
           {% endfor %}
         </tbody>

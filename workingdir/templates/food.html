@@ -86,7 +86,7 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/food.html">Food</a>
+            <a class="nav-link" href="/food.html">Recipes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/category.html">Category</a>
@@ -130,7 +130,13 @@
             <td>{{ recipe[2] }}</td>
             <td>{{ recipe[3] }}</td>
             <td>{{ recipe[5] }}</td>
+            <td>
+              <a href="/read-recipe.html?idrecipes={{recipe[0]}}">
+                <button class="btn btn-warning">Show recipe</button></a
+              >
+            </td>
           </tr>
+
           {% endfor %}
         </tbody>
       </table>

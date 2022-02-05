@@ -27,7 +27,7 @@ class Recipe:
     #selectRecipes in bound to class, not instance
     @classmethod
     def selectRecipes(self):
-        mycursor.execute("SELECT recipename, recipe_description, recipe_img, recipedifficulty, category  , cat_name FROM test.recipes INNER JOIN test.categories ON test.recipes.category=test.categories.idcategories;")
+        mycursor.execute("SELECT idrecipes, recipename, recipe_description, recipe_img, recipedifficulty, category  , cat_name FROM test.recipes INNER JOIN test.categories ON test.recipes.category=test.categories.idcategories;")
         myresult = mycursor.fetchall()
         return myresult
     
@@ -57,6 +57,46 @@ class Recipe:
         mycursor.execute(sql, (self.name, ))
         mydb.commit()
         print(mycursor.rowcount, "record selected.")  
+
+""" INGREDIENTS """
+
+class Ingredient:
+    def __init__(self, ing_name):
+        self.ing_name = ing_name
+
+    @classmethod
+    def selectIngredients(self):
+        mycursor.execute("SELECT ingredient_name FROM test.ingredients ")
+        myresult = mycursor.fetchall()
+        return myresult
+    """ SELECT ingredient_name FROM test.ingredients INNER JOIN test.recipes ON test.ingredients.idrecipes_2 =test.recipes.idrecipes; """
+
+    @classmethod
+    def selectIngredients2(self):
+        mycursor.execute("")
+        myresult = mycursor.fetchall()
+        return myresult
+
+    def createIngredient(self):
+        sql = "INSERT INTO test.ingredients ( ingredient_name ) VALUES (%s)"
+        mycursor.execute(sql, (self.ing_name, ))
+        mydb.commit()
+        print(mycursor.rowcount, "record inserted.")
+    
+def selectRecipeIngredients():
+    mycursor.execute("""SELECT recipes.idrecipes, recipes.recipename, ingredients.ingredient_name
+    FROM test.recipes
+    JOIN 
+    test.recipe_has_ingredients
+    ON
+    test.recipes.idrecipes = test.recipe_has_ingredients.recipe
+    JOIN 
+    test.ingredients
+    ON
+    test.ingredients.idingredients = test.recipe_has_ingredients.ingredient
+     """)
+    myresult = mycursor.fetchall()
+    return myresult
 
 """ STUFF FROM BELOW HERE IS TO BE USED ONLY IF WE HAVE TIME TO MAKE SOME EXTRAS FOR THE PROEJCT """
 """ CATEGORIES """

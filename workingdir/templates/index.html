@@ -62,7 +62,7 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/food.html">Food</a>
+            <a class="nav-link" href="/food.html">Recipes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/category.html">Category</a>
@@ -94,13 +94,14 @@
         <tbody>
           {% for recipe in recipes %}
           <tr>
-            <th scope="row">{{ recipe[0] }}</th>
-            <td>{{ recipe[1] }}</td>
+            <th scope="row">{{ recipe[1] }}</th>
+
             <td>{{ recipe[2] }}</td>
             <td>{{ recipe[3] }}</td>
-            <td>{{ recipe[5] }}</td>
+            <td>{{ recipe[4] }}</td>
+            <td>{{ recipe[6] }}</td>
             <td>
-              <a href="/read-recipe.html?idrecipes={{recipe[4]}}">
+              <a href="/read-recipe.html?idrecipes={{recipe[0]}}">
                 <button class="btn btn-warning">Show recipe</button></a
               >
             </td>
@@ -108,6 +109,12 @@
           {% endfor %}
         </tbody>
       </table>
+    </div>
+    <div>
+      {% for recipe in recipes %} {{recipe}} {% endfor %}
+    </div>
+    <div>
+      {% for ingredient in ingredients %} {{ingredient}} {% endfor %}
     </div>
     <!--   {% for user in users %}
     <div>{{ user[1] + ': ' + user[2] }}</div>
