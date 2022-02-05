@@ -50,6 +50,44 @@ button a:hover {
   color: aliceblue;
 }
 
+input[type='text'] {
+  margin-right: 4px;
+  border-radius: 4px;
+  padding-left: 8px;
+  border-color: #2b898b;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+input[type='text']:focus {
+  box-shadow: 0 0 3px #2b898b;
+  outline: none;
+  border: none;
+  border-radius: 16px;
+}
+
+select option {
+  background: #2b898b;
+  color: aliceblue;
+}
+
+select {
+  background: #2b898b;
+  color: aliceblue;
+  border-radius: 4px;
+  border-color: #2b898b;
+  margin-right: 4px;
+}
+
+input[type='submit'] {
+  background: #f88e28;
+  color: #213037;
+  border-radius: 4px;
+  border-color: transparent;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
 /* nav {
   min-height: 50px;
   background: orange;

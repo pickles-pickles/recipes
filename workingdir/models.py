@@ -51,7 +51,12 @@ class Recipe:
         mydb.commit()
         print(mycursor.rowcount, "record deleted.")
         """  mycursor.execute(sql, (self.name, self.description, self.img_url, self.difficulty, self.category)) """
-       
+
+    def readRecipe(self):
+        sql = """ SELECT FROM test.recipes  WHERE recipename = %s """ 
+        mycursor.execute(sql, (self.name, ))
+        mydb.commit()
+        print(mycursor.rowcount, "record selected.")  
 
 """ STUFF FROM BELOW HERE IS TO BE USED ONLY IF WE HAVE TIME TO MAKE SOME EXTRAS FOR THE PROEJCT """
 """ CATEGORIES """

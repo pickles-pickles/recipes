@@ -99,6 +99,11 @@
             <td>{{ recipe[2] }}</td>
             <td>{{ recipe[3] }}</td>
             <td>{{ recipe[5] }}</td>
+            <td>
+              <a href="/read-recipe.html?idrecipes={{recipe[4]}}">
+                <button class="btn btn-warning">Show recipe</button></a
+              >
+            </td>
           </tr>
           {% endfor %}
         </tbody>

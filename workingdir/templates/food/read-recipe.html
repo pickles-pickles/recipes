@@ -73,42 +73,7 @@
         </ul>
       </div>
     </nav>
-    <form action="/add-recipe.html" method="post" class="col-10">
-      <input type="text" placeholder="Name" name="name" />
-      <input type="text" placeholder="Description" name="description" />
-      <input type="text" placeholder="Image location" name="img_url" />
-      <!-- <input type="text" placeholder="Difficulty" name="difficulty" /> -->
-      <select name="difficulty" id="difficulty">
-        <option selected>
-          Difficulty
-        </option>
-        <option value="1">
-          1
-        </option>
-        <option value="2">
-          2
-        </option>
-        <option value="3">
-          3
-        </option>
-        <option value="4">
-          4
-        </option>
-        <option value="5">
-          5
-        </option>
-      </select>
-      <select name="category" id="category">
-        <!-- option value should be the KEY, NOT the value from the foreign table -->
-        {% for category in categories %}
-        <option value="{{category[0]}}">
-          {{ category[1] }}
-        </option>
-        {% endfor %}
-      </select>
-      <input type="submit" value="Submit" />
-    </form>
-    <h1 class="text-center">List of recipes</h1>
+    <h1>hello from read recipe</h1>
     <div>
       <table class="table table-striped">
         <thead>
@@ -121,7 +86,7 @@
           </tr>
         </thead>
         <tbody>
-          {% for recipe in recipes %}
+          {% for recipe in recipes %} {% if recipe[4]|string == idrecipes %}
           <tr>
             <th scope="row">{{ recipe[0] }}</th>
             <td>{{ recipe[1] }}</td>
@@ -129,16 +94,9 @@
             <td>{{ recipe[3] }}</td>
             <td>{{ recipe[5] }}</td>
           </tr>
-          {% endfor %}
+          {% endif %} {% endfor %}
         </tbody>
       </table>
     </div>
-    <!--  {% for recipe in recipes %}
-    <div>
-      {{ 'name:'+ recipe[0]|string + ', description: ' + recipe[1]|string + '
-      ,img_url: ' + recipe[2]|string + ', difficulty: ' + recipe[3]|string + ',
-      foreign_key: ' + recipe[4]|string + ', cat_name: ' + recipe[5]|string }}
-    </div>
-    {% endfor %} -->
   </body>
 </html>

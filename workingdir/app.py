@@ -85,10 +85,6 @@ def delete_recipe():
     return render_template('/food/delete-recipe.html', recipes = recipes )
 
 
-#############################################################################################
-                                        ## WORKING HERE ##
-#############################################################################################
-
 @app.route('/update-recipe.html', methods=['GET', 'POST'])
 def update_recipe():
     if request.method == "GET":
@@ -108,6 +104,17 @@ def update_recipe():
     recipes = Recipe.selectRecipes()
 
     return render_template('/food/update-recipe.html', recipes = recipes )
+
+#############################################################################################
+                                        ## WORKING HERE ##
+#############################################################################################
+
+@app.route("/read-recipe.html", methods=["GET"])
+def readRecipe():
+    if request.method== "GET":
+        recipes = Recipe.selectRecipes()
+        idrecipes = request.args.get('idrecipes')
+    return render_template("/food/read-recipe.html", recipes = recipes, idrecipes = idrecipes)
 
 #######################################################################################
 
