@@ -109,6 +109,20 @@
       <div class="row ml-0">
         <input type="text" name="ing" placeholder="Ingredient" />
       </div>
+      <div id="ing-inputs"></div>
+      <input
+        type="text"
+        id="num-of-ings"
+        placeholder="Give number of Ingredients"
+      />
+      <button
+        type="button"
+        class="btn btn-sm btn-secondary"
+        onclick="addInput()"
+        id="add-inp-btn"
+      >
+        Add Ingredient
+      </button>
       <input type="submit" value="Submit" />
     </form>
     <h1 class="text-center">List of recipes</h1>
@@ -151,4 +165,21 @@
     </div>
     {% endfor %} -->
   </body>
+  <script>
+    const ingInputs = document.getElementById('ing-inputs')
+    const input = document.createElement('input')
+
+    function addInput () {
+      const numOfIngs = document.getElementById('num-of-ings').value
+      for (let i = 0; i < numOfIngs; i++) {
+        ingInputs.innerHTML += ` <input type="text" name="ing" placeholder="Ingredient ${i +
+          1}" />`
+        console.log('i was clicked')
+      }
+    }
+
+    const addInpBtn = document.getElementById('add-inp-btn')
+    /* addInpBtn.addEventListener('click', addInput()) */
+    /* ddInpBtn.onclick = addInput */
+  </script>
 </html>
