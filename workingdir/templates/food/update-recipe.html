@@ -76,11 +76,22 @@
     {% for recipe in recipes %}
     <div>
       <form action="/update-recipe.html" method="post">
-        <input type="text" name="name" value="{{recipe[0]}}" />
-        <input type="text" name="description" value="{{recipe[1]}}" />
-        <input type="text" name="img_url" value="{{recipe[2]}}" />
-        <input type="text" name="difficulty" value="{{recipe[3]}}" />
-        <input type="text" name="category" value="{{recipe[4]}}" />
+        <input type="text" name="name" value="{{recipe[1]}}" />
+        <input type="text" name="description" value="{{recipe[2]}}" />
+        <input type="text" name="img_url" value="{{recipe[3]}}" />
+        <input type="text" name="difficulty" value="{{recipe[4]}}" />
+        <select name="category" id="category">
+          <!-- option value should be the KEY, NOT the value from the foreign table -->
+          {% for category in categories %} {% if category[0] == recipe[5] %}
+          <option value="{{category[0]}}" selected>
+            {{ category[1] }}
+          </option>
+          {% else %}
+          <option value="{{category[0]}}">
+            {{ category[1] }}
+          </option>
+          {% endif %} {% endfor %}
+        </select>
         <input type="submit" value="Update recipe" />
       </form>
     </div>
@@ -101,11 +112,11 @@
         <tbody>
           {% for recipe in recipes %}
           <tr>
-            <th scope="row">{{ recipe[0] }}</th>
-            <td>{{ recipe[1] }}</td>
+            <th scope="row">{{ recipe[1] }}</th>
             <td>{{ recipe[2] }}</td>
             <td>{{ recipe[3] }}</td>
-            <td>{{ recipe[5] }}</td>
+            <td>{{ recipe[4] }}</td>
+            <td>{{ recipe[6] }}</td>
           </tr>
           {% endfor %}
         </tbody>

@@ -1,5 +1,6 @@
 from distutils.log import debug
-from pydoc import stripid
+""" from nis import cat
+from pydoc import stripid """
 from flask import Flask, render_template, request
 from flask_cors import CORS
 from models import *
@@ -110,8 +111,9 @@ def update_recipe():
         toUpdate.updateRecipe()
 
     recipes = Recipe.selectRecipes()
+    categories = Category.selectCategories()
 
-    return render_template('/food/update-recipe.html', recipes = recipes )
+    return render_template('/food/update-recipe.html', recipes = recipes, categories = categories )
 
 #############################################################################################
                                         ## WORKING HERE ##
